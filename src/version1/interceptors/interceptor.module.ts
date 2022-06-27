@@ -1,16 +1,16 @@
 import { Module } from '@nestjs/common';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ExceptionInterceptor } from './exception.interceptor';
 import { ResponseTransformerInterceptor } from './response-transform.interceptor';
 
 @Module({
   providers: [
     {
-      provide: APP_FILTER,
+      provide: APP_INTERCEPTOR,
       useClass: ExceptionInterceptor,
     },
     {
-      provide: APP_FILTER,
+      provide: APP_INTERCEPTOR,
       useClass: ResponseTransformerInterceptor,
     },
   ],
